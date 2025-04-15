@@ -9,6 +9,8 @@ const lightTheme = {
 const darkTheme = {
     background: '#1a1a1a',
     text: '#ffffff',
+    secondText: '#504f4f',
+    buttonBg: '#afafaf',
 };
 
 const ThemeContext = createContext(lightTheme);
@@ -17,6 +19,7 @@ export const ThemeProvider = ({ children }) => {
     const systemScheme = useColorScheme();
 
     const theme = useMemo(() => {
+        console.log("systemScheme :", systemScheme);
         return systemScheme === 'dark' ? darkTheme : lightTheme;
     }, [systemScheme]);
 
