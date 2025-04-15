@@ -1,15 +1,17 @@
 // app/index.jsx
-import { View, Button, Text } from 'react-native';
+import {View, Button, Text, Pressable} from 'react-native';
 import { router } from 'expo-router';
+import {useTheme} from "../theme/themeContext";
 
 export default function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Select Mode:</Text>
-      <Button title="2D Scan" onPress={() => router.push('/object-scanner')} />
-      <Button title="3D Scan" onPress={() => router.push('/object-scanner?mode=3d')} />
-      <Button title="Text Scan" onPress={() => router.push('/text-scanner')} />
-      <Button title="Saved Items" onPress={() => router.push('/saved-items')} />
-    </View>
-  );
+    const theme = useTheme();
+
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:theme.background}}>
+            <Text style={{color:theme.text}}>Select Mode:</Text>
+            <Pressable onPress={() => {router.push("/login")}}>
+                <Text className={"bg-amber-400 p-4"}>login</Text>
+            </Pressable>
+        </View>
+    );
 }
