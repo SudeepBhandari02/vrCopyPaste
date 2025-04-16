@@ -8,7 +8,7 @@ export default function LoginScreen() {
 
     return (
         <View style={{flex: 1,alignItems: 'center',justifyContent: 'center'}}>
-            <Pressable onPress={() => {router.replace("/login")}}>
+            <Pressable onPress={() => {router.replace("/home")}}>
                 <Text>home</Text>
             </Pressable>
         </View>

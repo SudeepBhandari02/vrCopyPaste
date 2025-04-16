@@ -3,11 +3,12 @@ import {View,  Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 import { router } from 'expo-router';
 import {useTheme} from "../theme/themeContext";
 import {StatusBar} from "expo-status-bar";
-import logo from "../assets/images/logo.png"
+import logoDark from "../assets/images/logoDark.png"
+import logoLight from "../assets/images/logoLight.png"
 
 export default function HomeScreen() {
     const theme = useTheme();
-
+    const logo = theme.scheme === 'dark' ? logoDark : logoLight;
     return (
         <>
          <StatusBar backgroundColor={theme.background} />
@@ -25,8 +26,8 @@ export default function HomeScreen() {
                 <View className={"px-10 my-2 gap-3"}>
                     <Text className={"font-semibold text-xl ml-6"} style={{color:theme.secondText}}>New User ?</Text>
                    <View className={"w-full rounded-full p-2 border-2"} style={{borderColor:theme.buttonBg}} >
-                       <TouchableOpacity className={"w-full rounded-full p-4"} style={{backgroundColor:theme.buttonBg}}>
-                           <Text className={"text-center text-lg font-semibold"}>Create Account</Text>
+                       <TouchableOpacity className={"w-full rounded-full p-4"} style={{backgroundColor:theme.buttonBg}} onPress={()=>router.push("/signup")}>
+                           <Text className={"text-center text-lg font-semibold"} style={{color:theme.buttonText}}>Create Account</Text>
                        </TouchableOpacity>
                    </View>
                 </View>
@@ -36,7 +37,7 @@ export default function HomeScreen() {
                         <Text className={"text-md text-center font-semibold"} style={{color:theme.text}}>OR</Text>
                         <View className={"border-b w-28"}  style={{borderColor:theme.text}}/>
                     </View>
-                    <TouchableOpacity className={"w-full rounded-full border-2 p-5"} style={{borderColor:theme.buttonBg}} >
+                    <TouchableOpacity className={"w-full rounded-full border-2 p-5"} style={{borderColor:theme.buttonBg}} onPress={()=>router.push("/login")}>
                         <Text className={"text-center text-xl font-semibold"} style={{color:theme.text}}>Sign In</Text>
                     </TouchableOpacity>
                 </View>

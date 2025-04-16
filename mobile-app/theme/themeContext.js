@@ -2,14 +2,20 @@ import React, { createContext, useContext, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
 
 const lightTheme = {
+    scheme: 'light',
     background: '#ffffff',
     text: '#000000',
+    secondText: '#2b2a2a',
+    buttonText: '#ffffff',
+    buttonBg: '#2b2a2a',
 };
 
 const darkTheme = {
+    scheme: 'dark',
     background: '#1a1a1a',
     text: '#ffffff',
-    secondText: '#504f4f',
+    secondText: '#afafaf',
+    buttonText: '#000000',
     buttonBg: '#afafaf',
 };
 
