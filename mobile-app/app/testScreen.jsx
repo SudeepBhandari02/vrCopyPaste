@@ -66,7 +66,9 @@ export default function ThreeDScanScreen({ navigation }) {
             <CameraView ref={cameraRef} style={StyleSheet.absoluteFill} />
 
             {isObjectProcessed ? (
-                <ARModelView />
+                <View style={StyleSheet.absoluteFill}>
+                    <ARModelView />
+                </View>
             ) : (
                 <View style={styles.controls}>
                     <TouchableOpacity onPress={capturePhoto} style={styles.button}>
