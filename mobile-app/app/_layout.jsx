@@ -27,6 +27,7 @@ export default function Layout() {
             <ThemeProvider>
                 <Stack screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="/" />
+                    <Stack.Screen name="/testScreen" />
                     <Stack.Screen name="(auth)" />
                     <Stack.Screen name="(tabs)" />
                 </Stack>
