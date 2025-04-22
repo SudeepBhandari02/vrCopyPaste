@@ -16,7 +16,7 @@ export default function ARModelView() {
     const rotation = useRef({ x: 0, y: 0 });
     const scale = useRef(1);
 
-    const panSensitivity = 0.0002;
+    const panSensitivity = 0.0005;
     const pinchSensitivity = 1.0;
 
     const onPanEvent = (event) => {
@@ -62,9 +62,21 @@ export default function ARModelView() {
         loader.load(
             modelAsset.localUri || modelAsset.uri,
             (gltf) => {
-                const model = gltf.scene;
+                // const model = gltf.scene;
+                // scene.add(model);
+                // modelRef.current = model;
+
+                const geometry = new THREE.BoxGeometry(1, 1, 1);
+                const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+                const model = new THREE.Mesh(geometry, material);
                 scene.add(model);
-                modelRef.current = model;
+
+                const edges = new THREE.EdgesGeometry(geometry);
+                const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 }); // black edges
+                const wireframe = new THREE.LineSegments(edges, lineMaterial);
+                model.add(wireframe);
+
+                modelRef.current=model;
 
                 const box = new THREE.Box3().setFromObject(model);
                 const size = new THREE.Vector3();
@@ -79,11 +91,11 @@ export default function ARModelView() {
 
                 scale.current = scaleFactor;
 
-                console.log('✅ Model loaded and positioned');
+                console.log('Model loaded and positioned');
             },
             undefined,
             (error) => {
-                console.error('❌ Model load error:', error);
+                console.error('Model load error:', error);
             }
         );
 
