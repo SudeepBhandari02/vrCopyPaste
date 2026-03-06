@@ -41,6 +41,7 @@ const OCRScan = () => {
             ) : (
                 <Image source={{ uri: capturedPhoto.uri }} style={styles.preview} />
             )}
+            <Text style={styles.resultText}>{"Login"}</Text>
 
             <View style={styles.buttonContainer}>
                 {!capturedPhoto ? (
